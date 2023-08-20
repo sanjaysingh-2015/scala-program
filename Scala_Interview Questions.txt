@@ -1,0 +1,225 @@
+What is the difference between val and var in Scala?
+	val is used for defining immutable variables, while var is used for mutable variables.
+	Example:
+		val is immutable, while var is mutable.
+			val x = 10
+			var y = 5
+
+Explain the concept of "Option" in Scala.
+	Option represents a container that may hold a value or not. It's used to handle null values more safely.
+	Example:
+		Option is a container that may hold a value or be empty.
+			val maybeValue: Option[Int] = Some(42)
+			val noValue: Option[Int] = None
+
+What are higher-order functions in Scala?
+	Higher-order functions are functions that can take other functions as parameters or return functions as results.
+	Example:
+		Functions that take functions as parameters or return functions.
+			def applyTwice(f: Int => Int, x: Int): Int = f(f(x))
+			val doubled = applyTwice(_ * 2, 3)  // Result: 12
+
+How does pattern matching work in Scala?
+	Pattern matching allows you to match data against a set of patterns and execute code based on the match.
+	Example:
+		Matching data against patterns to execute code based on the match.
+			def matchNumber(x: Int): String = x match {
+			  case 0 => "Zero"
+			  case 1 => "One"
+			  case _ => "Other"
+			}
+
+What is a case class and why is it used?
+	A case class is a special class used for creating immutable data structures quickly. It automatically generates useful methods like equals, hashCode, and toString.
+	Example:
+		Used for creating immutable data structures.
+			case class Person(name: String, age: Int)
+			val person = Person("Alice", 25)
+
+Explain the concept of currying in Scala.
+	Currying is a technique of transforming a function that takes multiple arguments into a series of functions that each take a single argument.
+	Example:
+		Transforming a function with multiple arguments into a series of functions.
+			def add(x: Int)(y: Int): Int = x + y
+			val addFive = add(5)_
+
+What are implicit parameters in Scala?
+	Implicit parameters are passed automatically by the compiler to a function. They're often used for providing context or configuration.
+	Example:
+		Automatically passed parameters.
+			def greet(name: String)(implicit age: Int): Unit = {
+			  println(s"Hello, $name! You are $age years old.")
+			}
+			implicit val myAge: Int = 30
+			greet("Alice")  // Prints: Hello, Alice! You are 30 years old.
+
+How does Scala handle exceptions compared to Java?
+	Scala uses the try, catch, and finally blocks like Java, but it treats exceptions as values and provides the Option and Either types for more structured error handling.
+	Example:
+		Treats exceptions as values.
+			val result: Try[Int] = Try(10 / 0)
+			result match {
+			  case Success(value) => println(s"Result: $value")
+			  case Failure(exception) => println(s"Error: ${exception.getMessage}")
+			}
+
+What is the purpose of the apply method in Scala objects?
+	The apply method is used to create instances of a class without using the new keyword. It's often used for syntactic sugar, like creating collections.
+	Example:
+		Creating instances without new.
+			class Point(val x: Int, val y: Int)
+			object Point {
+			  def apply(x: Int, y: Int): Point = new Point(x, y)
+			}
+			val point = Point(2, 3)
+
+Explain the concept of a singleton object in Scala.
+	A singleton object is an instance of a class that's guaranteed to have only one instance, providing a way to define utility methods or hold shared state.
+	Example:
+		Instance guaranteed to have one instance.
+			object Logger {
+			  def log(message: String): Unit = println(message)
+			}
+			Logger.log("Hello, Singleton!")
+
+What is tail recursion optimization in Scala?
+	Tail recursion optimization is a feature that allows recursive functions to be optimized to avoid stack overflow errors.
+	Example:
+		Optimizes tail-recursive functions to avoid stack overflow.
+			def factorial(n: Int): Int = {
+			  @tailrec
+			  def loop(n: Int, acc: Int): Int = {
+			    if (n <= 0) acc else loop(n - 1, acc * n)
+			  }
+			  loop(n, 1)
+			}
+
+What is a trait in Scala?
+	A trait is similar to an interface in Java, but it can also provide method implementations. A class can extend multiple traits.
+	Example:
+		Like an interface with method implementations.
+			trait Speaker {
+			  def speak(): Unit
+			}
+			class Dog extends Speaker {
+			  def speak(): Unit = println("Woof!")
+			}
+
+How can you create a thread-safe singleton in Scala?
+	You can use the lazy initialization of a val to create a thread-safe singleton instance.
+	Example:
+		Using lazy val for initialization.
+			object Singleton {
+			  lazy val instance: Singleton = new Singleton
+			}
+
+What is the purpose of the for-comprehension syntax in Scala?
+	for-comprehension provides a concise syntax for working with monads like Option, Either, and collections.
+	Example:
+		Syntactic sugar for monads.
+			val numbers = List(1, 2, 3, 4)
+			val doubled = for {
+			  n <- numbers
+			} yield n * 2
+
+Explain the "Type Erasure" in Scala.
+	Scala uses type erasure to implement generics, which means that the type information is erased at runtime.
+	Example:
+		Type information erased at runtime.
+			def isString(x: Any): Boolean = x match {
+			  case s: String => true
+			  case _ => false
+			}
+
+What are implicits in Scala and how are they used?
+	Implicits are a mechanism for the compiler to automatically supply values or conversions when they are expected.
+	Example:
+		Compiler-supplied values or conversions.
+			implicit val discount: Double = 0.1
+			def applyDiscount(price: Double)(implicit discount: Double): Double = price * (1 - discount)
+
+What is the purpose of the Future and Promise classes in Scala's concurrency model?
+	Future represents a value that may be available at some point, while Promise is a writable, single-assignment container for a future value.
+	Example:
+		Managing asynchronous operations.
+			import scala.concurrent._
+			val futureResult: Future[String] = Future {
+			  // Asynchronous computation
+			  "Result"
+			}
+
+How can you handle resource management (e.g., closing files) using Scala's Try and Using construct?
+	The Using construct in Scala provides a safe way to manage resources that need to be closed after use.
+	Example:
+		Using Try to handle exceptions and Using for resource management.
+			import scala.util.Using
+			val result: Try[Unit] = Using(new FileWriter("file.txt")) { writer =>
+			  writer.write("Hello, Using!")
+			}
+
+Explain the concept of "Type Classes" in Scala.
+	Type classes are a way to achieve ad-hoc polymorphism, allowing you to define generic operations that work on different types.
+	Example:
+		Achieving ad-hoc polymorphism.
+			trait Numeric[T] {
+			  def plus(x: T, y: T): T
+			  def times(x: T, y: T): T
+			}
+			def sum[T](list: List[T])(implicit numeric: Numeric[T]): T = list.reduce(numeric.plus)
+
+What is a view in Scala collections?
+	A view in Scala collections is a lazy computation that gets evaluated only when needed, providing performance benefits for large collections.
+	Example:
+		Lazily evaluated computation.
+			val numbers = (1 to 10).view.map(_ * 2)
+			val firstFiveDoubled = numbers.take(5).toList  // Only computes the first five doubled values
+
+How does Scala handle multiple inheritance using traits?
+	Scala allows classes to extend multiple traits, avoiding some of the issues with the diamond problem that Java faces.
+	Example:
+		Allows classes to extend multiple traits.
+			trait A { def foo(): Unit }
+			trait B { def bar(): Unit }
+			class C extends A with B {
+			  def foo(): Unit = println("foo")
+			  def bar(): Unit = println("bar")
+			}
+
+What is the role of the "companion object" in Scala?
+	A companion object is an object with the same name as a class, often used to store static methods and shared state for that class.
+	Example:
+		Contains static methods and shared state.
+			class MyClass(val value: Int)
+			object MyClass {
+			  def create(value: Int): MyClass = new MyClass(value)
+			}
+			val instance = MyClass.create(42)
+
+What is the purpose of the sealed keyword in Scala?
+	The sealed keyword is used to restrict the inheritance of a class or trait to the same file, enhancing pattern matching exhaustiveness checks.
+	Example:
+		Restricts inheritance.
+			sealed abstract class Shape
+			case class Circle(radius: Double) extends Shape
+			case class Rectangle(width: Double, height: Double) extends Shape
+
+Explain the concept of "Partial Functions" in Scala.
+	A partial function is a function that is defined for only certain input values, and it's often used with pattern matching.
+	Example:
+		Functions defined for certain input values.
+			val divide: PartialFunction[Int, Int] = {
+			  case x if x != 0 => 10 / x
+			}
+
+How can you override the default equality check in Scala for case classes?
+	You can override the equals and hashCode methods in case classes to customize the equality check behavior.
+	Example:
+		Override equals and hashCode methods.
+			case class Person(name: String, age: Int) {
+			  override def equals(obj: Any): Boolean = obj match {
+			    case Person(otherName, otherAge) => name == otherName && age == otherAge
+			    case _ => false
+			  }
+			  override def hashCode(): Int = name.hashCode + age.hashCode
+			}
+

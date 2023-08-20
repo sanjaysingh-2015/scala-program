@@ -1,0 +1,51 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index()
+
+#Address Type
+GET     /address-type               controllers.AddressTypeController.getByFilter(id: Option[Long], code: Option[String], name: Option[String])
+POST    /address-type               controllers.AddressTypeController.createAddressType()
+PUT     /address-type/:id           controllers.AddressTypeController.updateAddressType(id: Long)
+DELETE  /address-type/:id           controllers.AddressTypeController.delete(id: Long)
+
+#Skill Type
+GET     /skill                      controllers.SkillController.getByFilter(id: Option[Long], code: Option[String], name: Option[String])
+POST    /skill                      controllers.SkillController.create()
+PUT     /skill/:id                  controllers.SkillController.update(id: Long)
+DELETE  /skill/:id                  controllers.SkillController.delete(id: Long)
+
+#Document Type
+GET     /document-type               controllers.DocumentTypeController.getByFilter(id: Option[Long], code: Option[String], name: Option[String])
+POST    /document-type               controllers.DocumentTypeController.createDocumentType()
+PUT     /document-type/:id           controllers.DocumentTypeController.updateDocumentType(id: Long)
+PUT     /document-type/status/:id    controllers.DocumentTypeController.updateStatus(id: Long)
+DELETE  /document-type/:id           controllers.DocumentTypeController.deleteDocumentType(id: Long)
+
+#KYC Document Type
+GET     /kyc-document-type               controllers.KycDocumentTypeController.getByFilter(id: Option[Long], code: Option[String], name: Option[String])
+POST    /kyc-document-type               controllers.KycDocumentTypeController.createDocumentType()
+PUT     /kyc-document-type/:id           controllers.KycDocumentTypeController.updateDocumentType(id: Long)
+PUT     /kyc-document-type/status/:id    controllers.KycDocumentTypeController.updateStatus(id: Long)
+DELETE  /kyc-document-type/:id           controllers.KycDocumentTypeController.deleteDocumentType(id: Long)
+
+#KYC Document Type Map
+GET     /kyc-document-type-map               controllers.KycDocumentTypeMapController.getByFilter(id: Option[Long], kycDocId: Option[Long], docId: Option[Long])
+POST    /kyc-document-type-map               controllers.KycDocumentTypeMapController.create()
+PUT     /kyc-document-type-map/:id           controllers.KycDocumentTypeMapController.update(id: Long)
+PUT     /kyc-document-type-map/status/:id    controllers.KycDocumentTypeMapController.updateStatus(id: Long)
+DELETE  /kyc-document-type-map/:id           controllers.KycDocumentTypeMapController.delete(id: Long)
+POST    /upload-csv                           controllers.KycDocumentTypeMapController.uploadCSV
+
+#User Type
+GET     /user                                controllers.UserController.findByFilter(id: Option[Long], userName: Option[String], name: Option[String], email: Option[String], phoneNo: Option[String])
+POST    /user                                controllers.UserController.create()
+PUT     /user/:id                            controllers.UserController.update(id: Long)
+PUT     /user/status/:id                     controllers.UserController.statusUpdate(id: Long)
+DELETE  /user/:id                            controllers.UserController.delete(id: Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

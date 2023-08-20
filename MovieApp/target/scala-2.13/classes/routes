@@ -1,0 +1,23 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# An example controller showing a sample home page
+#GET     /movies                 controllers.MovieController.getAllMovies
+#GET     /movies/:id             controllers.MovieController.getMovieById(id: Long)
+POST    /movies                 controllers.MovieController.createMovieWithActors()
+#PUT     /movies/:id             controllers.MovieController.updateMovie(id: Long)
+#DELETE  /movies/:id             controllers.MovieController.deleteMovie(id: Long)
+#
+#GET     /actors                 controllers.ActorController.getAllActors
+#GET     /actors/:id             controllers.ActorController.getActorById(id: Long)
+#POST    /actors                 controllers.ActorController.createActor()
+#PUT     /actors/:id             controllers.ActorController.updateActor(id: Long)
+#DELETE  /actors/:id             controllers.ActorController.deleteActor(id: Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+# Swagger
+GET     /docs/swagger-ui/*file      controllers.Assets.at(path="/public/swagger-ui", file)

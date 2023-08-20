@@ -1,0 +1,4 @@
+[error] /home/sanjay/Personal/scala/MovieApp/app/daos/MovieDAO.scala:26:122: value actorId is not a member of Int
+[error]       insertedMappings <- movieActorMappings ++= insertedActors.map(actor => MovieActorMapping(0, insertedMovieId, actor.actorId))
+[error]                                                                                                                          ^
+[error] one error found

@@ -1,0 +1,23 @@
+
+O
+src/main/scala/DseExample.scala,7/3/7345695e7283f9a6ab7e7ac9940713016590e382
+Q
+!src/main/scala/ArrayExample.scala,b/6/b69d21b2dd67ad9b5346cf47a84c68123c7bf759
+S
+#src/main/scala/TraitExample02.scala,6/9/699d38d1ee4a28d2b6e16f616b5b3677978ea1b1
+W
+'src/main/scala/InheritanceExample.scala,8/7/8768588130e3aad82b536b8348c89f48f0d90058
+T
+$src/main/scala/FieldOverriding.scala,6/d/6ddb328fc6a81827d308405c4f55b9b33033e283
+Z
+*src/main/scala/AbstractClassExample2.scala,f/2/f2f9e649100ffa5773c65eafe678da4f0ab28b2f
+S
+#src/main/scala/TraitExample01.scala,b/1/b1937ed1cceac84967b665a4e31ddafcc770db4a
+V
+&src/main/scala/TraitMixinExample.scala,5/6/56d784743873cb5413ffe7431906c94f2ed617ea
+Y
+)src/main/scala/AbstractClassExample.scala,f/d/fda46051a9e477cdd520e25ae0377369f6fa4d63
+U
+%src/main/scala/CaseClassExample.scala,b/d/bd1c9c4366a8f7881dad58855b125052033812d8
+S
+#src/main/scala/ArrayMDExample.scala,4/3/43540afb1a5f0deebed965db6ad1a5169c8992c3

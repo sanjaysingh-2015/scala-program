@@ -1,0 +1,5 @@
+[debug] Copy resource mappings: 
+[debug] 	(/home/sanjay/Personal/scala/MovieApp/conf/routes,/home/sanjay/Personal/scala/MovieApp/target/scala-2.13/classes/routes)
+[debug] 	(/home/sanjay/Personal/scala/MovieApp/conf/messages,/home/sanjay/Personal/scala/MovieApp/target/scala-2.13/classes/messages)
+[debug] 	(/home/sanjay/Personal/scala/MovieApp/conf/application.conf,/home/sanjay/Personal/scala/MovieApp/target/scala-2.13/classes/application.conf)
+[debug] 	(/home/sanjay/Personal/scala/MovieApp/conf/logback.xml,/home/sanjay/Personal/scala/MovieApp/target/scala-2.13/classes/logback.xml)
